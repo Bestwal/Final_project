@@ -1,0 +1,14 @@
+from .base_page import BasePage
+from .locators import  LoginPageLocators
+
+
+class LoginPage(BasePage):
+    def should_be_login_page(self):
+        self.should_be_login_url()
+        self.should_be_register_button()
+
+    def should_be_login_url(self):
+        assert "login" in self.browser.current_url, "'login' is not in the current URL"
+
+    def should_be_register_button(self):
+        assert self.is_element_present(*LoginPageLocators.REGISTER_BUTTON), "Register button is not presented"
